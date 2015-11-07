@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    title SiS-PM Web
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css")
+    script(type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js")
+    style(type="text/css").
+      .card { text-align: center; }
+      .switch { margin-bottom: 1em; }
+  body
+    .container
+      .row
+        .col.s8.offset-s2.m4.offset-m4.l3.offset-l5
+          .card
+            .card-content
+              .card-title.grey-text Power
+              .switches
+                each status, index in statuses
+                  - var id = index + 1;
+                  .switch
+                    span.title #{id}
+                    label
+                      input(type="checkbox" checked=status onclick="document.location = '/toggle.html/#{id}'")
+                      span.lever
