@@ -1,0 +1,3 @@
+#!/bin/bash
+export SISPM_BUS_AND_DEVICE=$(lsusb | grep "Programmable power" | egrep -o "[[:digit:]]{3}" | xargs echo | sed 's/ /\//')
+docker-compose $*
