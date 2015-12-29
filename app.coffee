@@ -41,6 +41,12 @@ app.put '/toggle/:id', (req, res) ->
     res.send status
   , showError res
 
+app.put '/switch/:id/:state', (req, res) ->
+  enable = (req.params.state == 'on')
+  sispm.switch(req.id, enable).then (status) ->
+    res.status(200).end()
+  , showError res
+
 # legacy routes
 
 app.get '/toggle.html/:id', (req, res) ->
